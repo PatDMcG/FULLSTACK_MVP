@@ -5,7 +5,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 const app = express()
 app.use(express.json())
-app.use(express.static("Front_END"))
+app.use(express.static("../Front_END"))
 
 const PORT = process.env.PORT
 const connectionString = process.env.DATABASE_URL
