@@ -1,12 +1,12 @@
 const {Pool} = require('pg')
 const express = require('express')
 const dotenv = require('dotenv')
+const path = require('path')
 
 dotenv.config()
 const app = express()
 app.use(express.json())
-app.use(express.static("../Front_END"))
-
+app.use(express.static(path.join(__dirname, '../Front_END')))
 const PORT = process.env.PORT
 const connectionString = process.env.DATABASE_URL
 const pool = new Pool({
