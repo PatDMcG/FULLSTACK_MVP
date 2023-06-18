@@ -13,13 +13,56 @@ const pool = new Pool({
     connectionString,
 })
 
+//get all
 app.get('/chores', async (req, res) => {
    let data = await pool.query("select * from chores") 
    console.log(data.rows)
     res.status(200).send(data.rows)
 })
 
+// get one
+app.get('/chores/:id', async (req, res) => {
+    let id = req.params.id
+    let data = await pool.query("select * from chores where id = $1", [id]) 
+    console.log(data.rows)
+     res.status(200).send(data.rows)
+ })
+ 
+ // delete one
+ app.delete('/chores/:id', async (req, res) => {
+    let id = req.params.id
+    let data = await pool.query("delete from chores where id = $1",[id]) 
+    console.log(data.rows)
+     res.status(200).send(data.rows)
+ })
 
+ //edit one
+ app.put('/chores/:id', async (req, res) => {
+    let id = req.params.id
+    let {Title , Est_Time_min} = req.body
+    if(Title !== null){await pool.query("update chores set Title = $1 where id = $2", [Title,id])}
+    if(Est_Time_min !== null){await pool.query("update chores set Title = $1 where id = $2", [Est_Time_min,id])}
+    let data = await pool.query("select * from chores where id = $1", [id]) 
+    console.log(data.rows)
+     res.status(200).send(data.rows)
+ })
+
+//delete all
+ app.delete('/chores', async (req, res) => {
+    let data = await pool.query("delete from chores") 
+    console.log(data.rows)
+     res.status(200).send(data.rows)
+ })
+
+ // add one
+ app.post('/chores', async (req, res) => {
+    let {Title , Est_Time_min} = req.body
+    if(Title !== null && Title !== '' && Est_Time_min >= 0 && Est_Time_min !== null){let data = await pool.query("insert into chores (Title,Est_time_min) Values ($1,$2) returning *",[Title,Est_Time_min])
+    console.log(data.rows)
+     res.status(200).send(data.rows)
+ }
+ })
+ 
 app.listen(PORT, () => {
     console.log(`listening on ${PORT}`)
 })
