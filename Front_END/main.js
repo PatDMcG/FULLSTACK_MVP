@@ -94,7 +94,7 @@ function edit(id)
         const requestOptions = {
          method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ Title: `${input}` })
+        body: JSON.stringify({ title: `${input}` })
         };
      let res = await fetch(`${API}chores/${e.target.id}`, requestOptions);
      let data = await res.json()
