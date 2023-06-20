@@ -25,7 +25,10 @@ grabber(`${CORSBYPASS}${API}chores`)
         delet.id = e
         delet.addEventListener("click", async (e) => 
         {
-            return await fetch(`${API}chores/${e.target.id}`,{ method: 'DELETE'})
+            let res = await fetch(`${API}chores/${e.target.id}`,{ method: 'DELETE'})
+                let data = await res.json()
+                console.log(data)
+                return data
         })
         editTitle = document.createElement("button")
         editTitle.id = e
@@ -91,9 +94,12 @@ function edit(id)
         const requestOptions = {
          method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: `${input}` })
+        body: JSON.stringify({ Title: `${input}` })
         };
-     return await fetch(`${API}chores/${e.target.id}`, requestOptions);
+     let res = await fetch(`${API}chores/${e.target.id}`, requestOptions);
+     let data = await res.json()
+     console.log(data)
+     return data
     })
 }  
 document.getElementsByClassName("reset")[0].addEventListener("click" , () => {   return fetch(`${API}chores`,{ method: 'DELETE'})})
