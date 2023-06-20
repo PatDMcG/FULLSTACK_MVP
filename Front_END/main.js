@@ -35,10 +35,15 @@ grabber(`${API}chores`)
         editTitle.addEventListener("click" , (e) => 
         {
             let id = e.target.id
-            edit(id)
+            editTitle(id)
         })
         editTime = document.createElement("button")
         editTime.id = e
+        editTime.addEventListener("click" , (e) => 
+        {
+            let id = e.target.id
+            editTime(id)
+        })
         editTitle.innerText = "Edit Name "
         editTime.innerText = "Edit Time "
         delet.innerText = " Remove Chore "
@@ -67,7 +72,43 @@ function timeManipulation(time)
         return timeString
     }
 
-function edit(id)
+    function editTitle(id)
+    {
+        console.log(id)
+        document.getElementsByTagName("button")[0].style.display = "none"
+        document.getElementsByClassName("line_3")[0].style.display = "none"
+        document.getElementsByClassName("line_6")[0].style.display = "none"
+        while(document.getElementById("chores").lastChild)
+        {
+            document.getElementById("chores").removeChild(document.getElementById("chores").firstChild)
+        }
+        grabber(`${CORSBYPASS}${API}chores/${id}`)
+        let UI = document.createElement("input")
+        UI.type = "text"
+        UI.id = 'UI'
+        p1 = document.createElement("p1")
+        p1.innerText = "INSERT NEW CHORE NAME"
+        button = document.createElement("button")
+        button.innerText = "submit"
+        button.id = id
+        document.getElementsByClassName("container_verticle")[0].appendChild(button)
+        document.getElementsByClassName("container_verticle")[0].appendChild(UI)
+        document.getElementsByClassName("container_verticle")[0].appendChild(p1)
+        button.addEventListener("click", async (e) => {
+            let input = document.getElementById('UI').value
+            const requestOptions = {
+             method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: `${input}` })
+            };
+         let res = await fetch(`${API}chores/${e.target.id}`, requestOptions);
+         let data = await res.json()
+         console.log(data)
+         return data
+        })
+    }  
+
+function editTime(id)
 {
     console.log(id)
     document.getElementsByTagName("button")[0].style.display = "none"
@@ -82,7 +123,7 @@ function edit(id)
     UI.type = "text"
     UI.id = 'UI'
     p1 = document.createElement("p1")
-    p1.innerText = "INSERT NEW CHORE NAME"
+    p1.innerText = "INSERT NEW ESTIMATED TIME IN MINUTES"
     button = document.createElement("button")
     button.innerText = "submit"
     button.id = id
@@ -94,7 +135,7 @@ function edit(id)
         const requestOptions = {
          method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: `${input}` })
+        body: JSON.stringify({ est_time_min: `${input}` })
         };
      let res = await fetch(`${API}chores/${e.target.id}`, requestOptions);
      let data = await res.json()
