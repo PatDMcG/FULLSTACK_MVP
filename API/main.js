@@ -7,7 +7,7 @@ var serveStatic = require('serve-static')
 dotenv.config()
 const app = express()
 app.use(express.json())
-app.use(serveStatic(path.join(__dirname, '../Front_END/main.html'), { index : [`main.html`, `main.htm`]}))
+app.use("/" , serveStatic(path.join(__dirname, '../Front_END/main.html'), { index : [`main.html`, `main.htm`]}))
 const PORT = process.env.PORT
 const connectionString = process.env.DATABASE_URL
 const pool = new Pool({
