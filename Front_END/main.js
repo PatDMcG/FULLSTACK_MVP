@@ -25,7 +25,7 @@ grabber(`${CORSBYPASS}${API}chores`)
         delet.id = e
         delet.addEventListener("click", async (e) => 
         {
-            let res = await fetch(`${API}chores/${e.target.id}`,{ method: 'DELETE'})
+            let res = await fetch(`${CORSBYPASS}${API}chores/${e.target.id}`,{ method: 'DELETE'})
                 let data = await res.json()
                 console.log(data)
                 return data
@@ -96,7 +96,7 @@ function edit(id)
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: `${input}` })
         };
-     let res = await fetch(`${API}chores/${e.target.id}`, requestOptions);
+     let res = await fetch(`${CORSBYPASS}${API}chores/${e.target.id}`, requestOptions);
      let data = await res.json()
      console.log(data)
      return data
