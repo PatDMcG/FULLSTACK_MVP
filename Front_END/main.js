@@ -5,7 +5,7 @@ async function grabber(input) {
 
     const response = await fetch(`${input}`);
       const data = await response.json();
-      //clear(document.getElementById("view"))
+      console.log(data)
     return data
       
     
@@ -13,4 +13,4 @@ async function grabber(input) {
     chores = document.createElement("p1")
     chores.innerText = grabber(`${API}chores`)
     document.getElementById("chores").appendChild(chores)
-    
+    console.log(chores)
