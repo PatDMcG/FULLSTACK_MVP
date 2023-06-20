@@ -35,14 +35,14 @@ grabber(`${API}chores`)
         editTitle.addEventListener("click" , (e) => 
         {
             let id = e.target.id
-            editTitle(id)
+            edit(id)
         })
         editTime = document.createElement("button")
         editTime.id = e
         editTime.addEventListener("click" , (e) => 
         {
             let id = e.target.id
-            editTime(id)
+            editT(id)
         })
         editTitle.innerText = "Edit Name "
         editTime.innerText = "Edit Time "
@@ -72,7 +72,7 @@ function timeManipulation(time)
         return timeString
     }
 
-    function editTitle(id)
+    function edit(id)
     {
         console.log(id)
         document.getElementsByTagName("button")[0].style.display = "none"
@@ -108,7 +108,7 @@ function timeManipulation(time)
         })
     }  
 
-function editTime(id)
+function editT(id)
 {
     console.log(id)
     document.getElementsByTagName("button")[0].style.display = "none"
