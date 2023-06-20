@@ -8,7 +8,7 @@ async function grabber(input) {
     displayer(data)
     
     };
-grabber(`${API}chores`)
+grabber(`${CORSBYPASS}${API}chores`)
 
     function displayer(data)
     {
