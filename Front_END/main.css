@@ -1,0 +1,64 @@
+.container_verticle
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.line_1
+{
+    display: flex;
+    flex-direction: wrap;
+    justify-content: center;
+}
+.reset
+{
+    display: flex;
+    flex-direction: wrap;
+    justify-content: flex-end;
+    padding-inline: 1%;
+
+}
+.line_2
+{
+    
+        display: flex;
+        flex-direction: wrap;
+        justify-content: center;
+    
+}
+.line_3
+{
+
+        display: flex;
+        flex-direction: wrap;
+        justify-content: space-between;
+    
+}
+.chores_container
+{
+    display: flex;
+    flex-direction: column;
+    justify-items: auto;
+}
+.test
+{
+    display: flex;
+    flex-direction: wrap;
+    justify-content: space-between;
+    padding-bottom: 2%;
+}
+.inner
+{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-self: space-between;
+}
+.line_6
+{
+    
+        display: flex;
+        flex-direction: wrap;
+        justify-content: space-between;
+        padding-top: 5%;
+}
