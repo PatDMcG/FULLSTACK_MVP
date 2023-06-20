@@ -6,10 +6,11 @@ async function grabber(input) {
     const response = await fetch(`${input}`);
       const data = await response.json();
       //clear(document.getElementById("view"))
-    console.log(data)
+    return data
       
     
     };
-
-grabber(`${API}chores`)
+    chores = document.createElement("p1")
+    chores.innerText = grabber(`${API}chores`)
+    document.getElementById("chores container").appendChild(chores)
     
