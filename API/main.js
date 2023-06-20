@@ -63,7 +63,7 @@ app.get('/chores/:id', async (req, res) => {
     if(est_time_min !== null){await pool.query("update chores set Est_Time_min = $1 where id = $2", [est_time_min,id])}
     let data = await pool.query("select * from chores where id = $1", [id]) 
     console.log(data.rows)
-     res.status(200).send({title})
+     res.status(200).send({est_time_min})
               
 } catch (error) {
     res.status(500).send(error)
