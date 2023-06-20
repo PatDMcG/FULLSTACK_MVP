@@ -59,8 +59,8 @@ app.get('/chores/:id', async (req, res) => {
     try{
     let id = req.params.id
     let {title , est_time_min} = req.body
-    if(title !== null){await pool.query("update chores set Title = $1 where id = $2", [title,id])}
-    if(est_time_min !== null){await pool.query("update chores set Title = $1 where id = $2", [est_time_min,id])}
+    if(title !== null){await pool.query("update chores set Title = '$1' where id = $2", [title,id])}
+    if(est_time_min !== null){await pool.query("update chores set Est_Time_min = $1 where id = $2", [est_time_min,id])}
     let data = await pool.query("select * from chores where id = $1", [id]) 
     console.log(data.rows)
      res.status(200).send({title})
