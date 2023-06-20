@@ -58,13 +58,22 @@ app.get('/chores/:id', async (req, res) => {
  app.put('/chores/:id', async (req, res) => {
     try{
     let id = req.params.id
-    let {title , est_time_min} = req.body
-    console.log(title)
-    if(title !== null && title !== '' && title !== )
+    let title = req.body.title
+    let est_time_min = req.body.est_time_min
+    if(title == undefined)
+    {
+        title = null
+    }
+    if(est_time_min == undefined)
+    {
+        est_time_min = null
+    }
+    console.log(est_time_min)
+    if(title !== null && title !== '' && title !== undefined)
     {
        await pool.query("update chores set Title = $1 where id = $2", [title,id])
     }
-    if(est_time_min !== null && est_time_min !== '')
+    if(est_time_min !== null && est_time_min !== '' && est_time_min !== undefined)
     {
        await pool.query("update chores set Est_Time_min = $1 where id = $2", [est_time_min,id])
     }
