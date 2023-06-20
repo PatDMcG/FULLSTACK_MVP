@@ -2,6 +2,7 @@ const {Pool} = require('pg')
 const express = require('express')
 const dotenv = require('dotenv')
 const path = require('path')
+const { title } = require('process')
 dotenv.config()
 const app = express()
 app.use(express.json())
@@ -64,7 +65,7 @@ app.get('/chores/:id', async (req, res) => {
     if(Est_Time_min !== null){await pool.query("update chores set Title = $1 where id = $2", [Est_Time_min,id])}
     let data = await pool.query("select * from chores where id = $1", [id]) 
     console.log(data.rows)
-     res.status(200).send(data.rows)
+     res.status(200).send(title)
               
 } catch (error) {
     res.status(500).send(error)
