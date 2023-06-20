@@ -12,5 +12,5 @@ async function grabber(input) {
     };
     chores = document.createElement("p1")
     chores.innerText = grabber(`${API}chores`)
-    document.getElementById("chores container").appendChild(chores)
+    document.getElementById("chores").appendChild(chores)
     
