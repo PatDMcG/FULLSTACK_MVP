@@ -113,7 +113,7 @@ app.get('/chores/:id', async (req, res) => {
     {
         est_time_min = null
     }
-    if(Title !== null && Title !== '' && Est_Time_min >= 0 && Est_Time_min !== null){let data = await pool.query("insert into chores (Title,Est_time_min) Values ($1,$2) returning *",[Title,Est_Time_min])
+    if(title !== null && title !== '' && est_time_min >= 0 && est_time_min !== null){let data = await pool.query("insert into chores (Title,Est_time_min) Values ($1,$2) returning *",[title,est_time_min])
     console.log(data.rows)
      res.status(200).send(data.rows)
     }
