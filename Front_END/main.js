@@ -205,10 +205,13 @@ function makeNew()
     submit.id = 0
     submit.addEventListener("click", async (e) => 
     {
+
+        let timevalue = parseInt(document.getElementById("time").value)
+        let titlevalue = document.getElementById("title").value
         const requestOptions = {
             method: 'POST',
            headers: { 'Content-Type': 'application/json' },
-           body: JSON.stringify({ est_time_min: `${parseInt(document.getElementById("time").value)}`, title : `${document.getElementById("title")}` })
+           body: JSON.stringify({ est_time_min: `${timevalue}`, title : `${titlevalue}` })
            };
         let res = await fetch(`${API}chores`, requestOptions);
         let data = await res.json()
