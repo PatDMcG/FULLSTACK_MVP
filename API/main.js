@@ -119,7 +119,8 @@ app.get('/chores/:id', async (req, res) => {
     }
               
     } catch (error) {
-        res.status(500).send(error)
+        res.status(500).send(error.message)
+        console.log(error,error.message)
         
     }})
  
