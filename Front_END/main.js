@@ -152,8 +152,8 @@ function editT(id)
 function reset()
 {   
     document.getElementsByTagName("button")[0].style.display = "block"
-    document.getElementsByClassName("line_3")[0].style.display = "block"
-    document.getElementsByClassName("line_6")[0].style.display = "block"
+    document.getElementsByClassName("line_3")[0].style.display = "flex"
+    document.getElementsByClassName("line_6")[0].style.display = "flex"
     document.getElementsByClassName("container_verticle")[0].removeChild(document.getElementById('KILL'))
     document.getElementsByClassName("container_verticle")[0].removeChild(document.getElementById('UI'))
     console.log(document.getElementsByClassName("container_verticle")[0].removeChild(document.getElementsByClassName("container_verticle")[0].lastChild))
@@ -217,8 +217,8 @@ function makeNew()
         let data = await res.json()
             console.log(data)
             setTimeout(reload, 100)
-            document.getElementsByClassName("line_6")[0].style.display= "Block"
-            document.getElementsByClassName("line_3")[0].style.display= "Block"
+            document.getElementsByClassName("line_6")[0].style.display= "flex"
+            document.getElementsByClassName("line_3")[0].style.display= "flex"
             return data
             
     })
